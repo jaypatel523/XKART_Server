@@ -16,7 +16,7 @@ const getAllProducts = async (req, res) => {
 const getPaginatedProducts = async (req, res) => {
   try {
     // console.log("HI");
-    console.log(req.query)
+//     console.log(req.query)
     let { pageNumber, limit } = req.query;
     limit = limit || 8;
 
@@ -32,7 +32,7 @@ const getPaginatedProducts = async (req, res) => {
       markedSold: false
     }).skip(startIndex).limit(limit).exec()
 
-    console.log(totalProducts);
+//     console.log(totalProducts);
     let totalPages = parseInt(Math.ceil(totalProducts / limit));
     res.send({ paginatedProducts, totalPages });
   }
