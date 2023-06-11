@@ -13,6 +13,35 @@ const getAllProducts = async (req, res) => {
 };
 
 
+const getPaginatedProducts = async (req, res) => {
+  try {
+    // console.log("HI");
+    console.log(req.query)
+    let { pageNumber, limit } = req.query;
+    limit = limit || 8;
+
+    let totalProducts = await AllProduct.countDocuments({
+      adminApproved: true,
+      markedSold: false
+    });
+    let startIndex = pageNumber * limit;
+    let endIndex = (pageNumber + 1) * limit;
+
+    const paginatedProducts = await AllProduct.find({
+      adminApproved: true,
+      markedSold: false
+    }).skip(startIndex).limit(limit).exec()
+
+    console.log(totalProducts);
+    let totalPages = parseInt(Math.ceil(totalProducts / limit));
+    res.send({ paginatedProducts, totalPages });
+  }
+  catch (err) {
+    res.send(err);
+  }
+}
+
+
 const getProductById = async (req, res) => { };
 
 
@@ -99,6 +128,6 @@ module.exports = {
   getProductCitywise,
   getProductUser,
   getProductById,
-  searchProducts
-
+  searchProducts,
+  getPaginatedProducts
 };
