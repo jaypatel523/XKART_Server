@@ -22,13 +22,14 @@ const io = new Server(httpServer, {
   },
 });
 
-// const path = require('path');
-// app.use(express.static(path.join(__dirname, '../client/dist')));
+const corsOptions = {
+  origin: 'http://localhost:5173',
+};
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use("/api/", userRoutes);
