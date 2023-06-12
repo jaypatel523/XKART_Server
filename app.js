@@ -16,14 +16,14 @@ const app = express();
 const httpServer = http.createServer(app);
 const io = new Server(httpServer, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: "https://xkart-client-jcn7.vercel.app/",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept"],
   },
 });
 
 const corsOptions = {
-  origin: 'http://localhost:5173',
+  origin: 'https://xkart-client-jcn7.vercel.app/',
 };
 
 app.use(bodyParser.json());
