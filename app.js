@@ -16,14 +16,14 @@ const app = express();
 const httpServer = http.createServer(app);
 const io = new Server(httpServer, {
   cors: {
-    origin: "https://C2COnlineExchange-XKART.vercel.app/",
+    origin: "https://xkart-onlineexchange.vercel.app/",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept"],
   },
 });
 
 const corsOptions = {
-  origin: 'https://C2COnlineExchange-XKART.vercel.app/',
+  origin: 'https://xkart-onlineexchange.vercel.app/',
 };
 
 app.use(bodyParser.json());
